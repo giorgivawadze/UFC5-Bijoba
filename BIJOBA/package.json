@@ -1,0 +1,12 @@
+{
+  "name": "ufc5-blood-sport",
+  "version": "1.0.0",
+  "description": "UFC 5 Blood Sport Edition",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

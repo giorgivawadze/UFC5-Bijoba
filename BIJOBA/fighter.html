@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighter Profile | UFC 5 BLOOD SPORT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Russo+One&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Blood Splatter Effect -->
+    <div class="blood-overlay"></div>
+    
+    <header class="blood-header">
+        <div class="glitch-container">
+            <h1 class="glitch" data-text="FIGHTER PROFILE">FIGHTER PROFILE</h1>
+            <div class="subtitle">BLOOD SPORT EDITION</div>
+        </div>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> BACK TO ARENA
+        </a>
+    </header>
+
+    <main class="cage-container">
+        <section class="fighter-profile" id="fighter-profile">
+            <!-- Fighter content loaded by JS -->
+        </section>
+    </main>
+
+    <footer class="blood-footer">
+        <p>WARNING: CONTINUED VIEWING MAY INDUCE VIOLENT TENDENCIES</p>
+        <div class="blood-drip"></div>
+    </footer>
+
+    <script>
+        // Get fighter ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const fighterId = urlParams.get('id');
+
+        // Fighter Data
+        const fighters = [
+    {
+        "id": 1,
+        "name": "Giorgi Vatsadze",
+        "nickname": "THE BULL",
+        "rank": "Champion",
+        "record": "17-4-0",
+        "stats": {
+            "wins": 17,
+            "losses": 4,
+            "knockouts": 15,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "4.png",
+        "bio": "Known for his devastating knockout power, THE BULL charges through opponents with relentless aggression. 15 of his 17 wins came by way of knockout, often in the first round. His signature move is the overhand right that has put many fighters to sleep. With granite chin and heavy hands, he dominates the octagon with pure striking power."
+    },
+    {
+        "id": 2,
+        "name": "Luka Gurwishvili",
+        "nickname": "OSSETIAN WARRIOR",
+        "rank": 3,
+        "record": "5-3-0",
+        "stats": {
+            "wins": 5,
+            "losses": 3,
+            "knockouts": 5,
+            "submissions": 0,
+            "decisions": 0
+        },
+        "image": "1.png",
+        "bio": "A pure striker with knockout power in both hands. The OSSETIAN WARRIOR never backs down from a brawl and has finished all his wins by knockout. His aggressive style makes him a fan favorite. Trained in traditional Ossetian wrestling, he combines striking with brutal clinch work that wears down opponents."
+    },
+    {
+        "id": 3,
+        "name": "Nika Kopaliani",
+        "nickname": "Nikita",
+        "rank": 2,
+        "record": "7-4-0",
+        "stats": {
+            "wins": 7,
+            "losses": 4,
+            "knockouts": 5,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "5.png",
+        "bio": "Technical striker with precision timing and footwork. Nikita picks apart opponents with surgical striking and has a knack for finding knockout opportunities in later rounds. His calm demeanor in the cage contrasts with his violent finishes. Background in kickboxing gives him diverse striking arsenal."
+    },
+    {
+        "id": 4,
+        "name": "Saba Boyoveli",
+        "nickname": "THE EAGLE",
+        "rank": 1,
+        "record": "9-5-0",
+        "stats": {
+            "wins": 9,
+            "losses": 5,
+            "knockouts": 9,
+            "submissions": 0,
+            "decisions": 0
+        },
+        "image": "2.png",
+        "bio": "Pure knockout artist with 9 first-round finishes. THE EAGLE soars through opponents with lightning-fast combinations and explosive power. His fights rarely see the second round. Trains at high altitude to maintain cardio for his explosive style. Known for his lethal left hook."
+    },
+    {
+        "id": 5,
+        "name": "Dachi Gvaladze",
+        "nickname": "THE CAVEMAN",
+        "rank": 4,
+        "record": "7-5-0",
+        "stats": {
+            "wins": 7,
+            "losses": 5,
+            "knockouts": 7,
+            "submissions": 0,
+            "decisions": 0
+        },
+        "image": "8.png",
+        "bio": "Brute strength and raw power define THE CAVEMAN. He overwhelms opponents with relentless pressure and earth-shaking power in both hands. All wins by knockout, often in devastating fashion. Background in powerlifting gives him exceptional strength. His walkout music is always primitive drums."
+    },
+    {
+        "id": 6,
+        "name": "Luka Shergelashvili",
+        "nickname": "DARKNESS",
+        "rank": 6,
+        "record": "6-4-0",
+        "stats": {
+            "wins": 6,
+            "losses": 4,
+            "knockouts": 4,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "7.png",
+        "bio": "Methodical and calculated, DARKNESS drags opponents into deep waters and drowns them with pressure. Excellent cardio and granite chin allow him to push a punishing pace. 4 KOs and 2 decisions show his versatile finishing ability. Trains in complete darkness to enhance other senses."
+    },
+    {
+        "id": 7,
+        "name": "Giorgi Kvaratskhelia",
+        "nickname": "BIG BOY",
+        "rank": 7,
+        "record": "5-4-0",
+        "stats": {
+            "wins": 5,
+            "losses": 4,
+            "knockouts": 4,
+            "submissions": 0,
+            "decisions": 1
+        },
+        "image": "3.jpg",
+        "bio": "Massive heavyweight with surprising speed for his size. BIG BOY uses his reach effectively and has thunderous power in his hands. When he connects, opponents don't get back up. Background in rugby gives him exceptional tackling ability. Enjoys intimidating stare-downs before fights."
+    },
+    {
+        "id": 8,
+        "name": "Akaki Tsabria",
+        "nickname": "ICE COLD",
+        "rank": 5,
+        "record": "5-2-0",
+        "stats": {
+            "wins": 5,
+            "losses": 5,
+            "knockouts": 3,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "6.png",
+        "bio": "Technical counter-striker with ice in his veins. ICE COLD remains calm under pressure and picks apart aggressive opponents. His precise timing leads to beautiful knockout finishes. Never shows emotion in the cage. Trains in cryotherapy chambers to enhance recovery."
+    }
+]
+
+        // Find the fighter
+        const fighter = fighters.find(f => f.id == fighterId);
+        const profileEl = document.getElementById('fighter-profile');
+        
+        if (fighter) {
+            // Calculate win rate
+            const totalFights = fighter.stats.wins + fighter.stats.losses;
+            const winRate = totalFights ? (fighter.stats.wins / totalFights * 100).toFixed(1) : 0;
+            
+            profileEl.innerHTML = `
+                <div class="fighter-header">
+                    <div class="fighter-image" style="background-image: url('${fighter.image}')"></div>
+                    <div class="fighter-titles">
+                        <h1>${fighter.name}</h1>
+                        <h2>"${fighter.nickname}"</h2>
+                        <h3>${fighter.rank === 'Champion' ? '👑 CHAMPION' : `Rank #${fighter.rank}`}</h3>
+                        <h3>${fighter.record}</h3>
+                    </div>
+                </div>
+
+                <div class="blood-stats">
+                    <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> COMBAT METRICS</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>WINS</h3>
+                            <div class="stat-value">${fighter.stats.wins}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>LOSSES</h3>
+                            <div class="stat-value">${fighter.stats.losses}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>KNOCKOUTS</h3>
+                            <div class="stat-value">${fighter.stats.knockouts}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>SUBMISSIONS</h3>
+                            <div class="stat-value">${fighter.stats.submissions}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>DECISIONS</h3>
+                            <div class="stat-value">${fighter.stats.decisions}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>WIN RATE</h3>
+                            <div class="stat-value">${winRate}%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fighter-bio">
+                    <h2 class="section-title"><i class="fas fa-book-dead"></i> COMBAT HISTORY</h2>
+                    <div class="bio-content">
+                        <p>${fighter.bio}</p>
+                        <div class="signature">
+                            <div class="signature-line"></div>
+                            <div>${fighter.name}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            profileEl.innerHTML = `
+                <div class="error-card">
+                    <h2><i class="fas fa-skull-crossbones"></i> FIGHTER NOT FOUND</h2>
+                    <p>The requested gladiator has vanished from the arena.</p>
+                    <a href="index.html" class="back-btn">RETURN TO BATTLEGROUND</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

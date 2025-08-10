@@ -1,0 +1,905 @@
+:root {
+    --blood-red: #ff0000;
+    --blood-dark: #8a0000;
+    --void-black: #000000;
+    --crimson: #dc143c;
+    --carbon: #0d0d0d;
+    --neon-red: #ff073a;
+    --glow-red: rgba(255, 0, 0, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Russo One', sans-serif;
+}
+
+body {
+    background-color: var(--void-black);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 20%),
+        radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 20%);
+}
+
+.blood-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle, transparent 20%, var(--blood-dark) 25%, transparent 26%),
+        radial-gradient(circle, transparent 20%, var(--blood-dark) 25%, transparent 26%);
+    background-size: 3em 3em;
+    background-position: 0 0, 1.5em 1.5em;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#cover-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+}
+
+#cover-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(100%) contrast(120%);
+}
+
+.cover-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    text-shadow: 0 0 20px rgba(255,0,0,0.7);
+}
+
+.cover-content h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    animation: textPulse 2s infinite;
+}
+
+.cover-content p {
+    font-size: 1.5rem;
+    color: #aaa;
+    margin-top: 2rem;
+    letter-spacing: 2px;
+}
+
+.loading-pulse {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.pulse-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid var(--blood-red);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.pulse-ring.delay {
+    animation-delay: 1s;
+}
+
+.blood-drop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 40px;
+    background: var(--blood-red);
+    border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
+    box-shadow: 0 0 20px rgba(255,0,0,0.8);
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 0.2; }
+    100% { transform: scale(0.8); opacity: 0.8; }
+}
+
+@keyframes textPulse {
+    0% { opacity: 0.7; text-shadow: 0 0 10px var(--glow-red); }
+    50% { opacity: 1; text-shadow: 0 0 30px rgba(255,0,0,1); }
+    100% { opacity: 0.7; text-shadow: 0 0 10px var(--glow-red); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+.blood-header {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: linear-gradient(to bottom, #1a0000 0%, #000 100%);
+    border-bottom: 3px solid var(--blood-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.glitch-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.glitch {
+    position: relative;
+    font-size: 6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0.05em 0 0 var(--neon-red), -0.05em -0.025em 0 rgba(0,255,0,0.7);
+    letter-spacing: 2px;
+    animation: glitch 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+.subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--neon-red);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: -1rem;
+}
+
+.event-info {
+    font-size: 1.2rem;
+    color: var(--neon-red);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--glow-red);
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+#countdown > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#countdown span:first-child {
+    font-size: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--glow-red);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--blood-red);
+    min-width: 80px;
+}
+
+#countdown span:last-child {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+    color: #aaa;
+}
+
+.cage-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--blood-red);
+    position: relative;
+    text-shadow: 0 0 15px var(--glow-red);
+}
+
+.section-title i {
+    margin-right: 1rem;
+}
+
+.blood-champion {
+    margin-bottom: 3rem;
+}
+
+/* CHAMPION CARD - CLICKABLE STYLES */
+.champion-card {
+    background: linear-gradient(135deg, #1a0000 0%, #4d0000 100%);
+    border: 3px solid var(--blood-red);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.champion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+    border-color: var(--neon-red);
+}
+
+.champion-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(255,0,0,0) 70%);
+    z-index: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.champion-card:hover::before {
+    transform: scale(1.1);
+    opacity: 0.7;
+}
+
+.blood-rankings {
+    margin-bottom: 3rem;
+}
+
+.rankings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.fighter-rank-card {
+    background: rgba(20, 0, 0, 0.8);
+    border-left: 5px solid var(--blood-red);
+    border-radius: 5px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.fighter-rank-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--glow-red);
+    border-left: 5px solid var(--neon-red);
+}
+
+.rank-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--blood-red);
+    min-width: 50px;
+    text-align: center;
+    text-shadow: 0 0 10px var(--glow-red);
+}
+
+.blood-match {
+    background: rgba(10, 0, 0, 0.7);
+    border: 2px solid var(--blood-red);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+}
+
+.vs-banner {
+    text-align: center;
+    font-size: 2rem;
+    background: var(--blood-red);
+    padding: 1rem;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+    position: relative;
+    overflow: hidden;
+}
+
+.vs-banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s infinite;
+}
+
+.matchup-cage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.fighter-card {
+    flex: 1;
+    background: rgba(15, 0, 0, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(139, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.fighter-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 40px var(--glow-red);
+}
+
+.fighter-image {
+    height: 300px;
+    background-size: cover;
+    background-position: top center;
+}
+
+.fighter-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.fighter-name {
+    font-size: 1.8rem;
+    color: var(--neon-red);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--glow-red);
+}
+
+.fighter-record {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+}
+
+.vs-divider {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--blood-red);
+    position: relative;
+    text-shadow: 0 0 15px var(--glow-red);
+}
+
+.pulse-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 5px solid var(--blood-red);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    z-index: -1;
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.vote-btn {
+    flex: 1;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #1a0000, #8a0000);
+    color: white;
+    border: 2px solid var(--blood-red);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.vote-btn:hover {
+    background: linear-gradient(to right, #8a0000, #1a0000);
+    box-shadow: 0 0 20px var(--glow-red);
+    transform: translateY(-3px);
+}
+
+.vote-btn:active {
+    transform: translateY(1px);
+}
+
+.blood-meter {
+    height: 40px;
+    background: #1a0000;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    margin: 1.5rem 0;
+    border: 1px solid var(--blood-red);
+}
+
+.blood-bar {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+#bloodBar1 {
+    background: linear-gradient(to right, #1a0000, #ff0000);
+}
+
+#bloodBar2 {
+    background: linear-gradient(to left, #1a0000, #ff0000);
+}
+
+.blood-count {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--neon-red);
+    text-align: center;
+}
+
+.blood-count span:first-child,
+.blood-count span:last-child {
+    flex: 1;
+    text-shadow: 0 0 10px var(--glow-red);
+}
+
+.separator {
+    font-size: 1rem;
+    color: #aaa;
+    padding: 0 1rem;
+    align-self: center;
+}
+
+.blood-stats {
+    margin-bottom: 3rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: rgba(15, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 3px solid var(--blood-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--blood-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+.stat-value {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--neon-red);
+    margin: 1rem 0;
+    text-shadow: 0 0 10px var(--glow-red);
+}
+
+.stat-label {
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.blood-footer {
+    background: linear-gradient(to top, #1a0000 0%, #000 100%);
+    padding: 3rem 1rem 4rem;
+    text-align: center;
+    border-top: 3px solid var(--blood-red);
+    position: relative;
+    margin-top: 3rem;
+}
+
+.blood-drip {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 40px;
+    background: 
+        radial-gradient(circle at 50% 0, var(--blood-red) 25%, transparent 26%),
+        radial-gradient(circle at 40% 0, var(--blood-red) 25%, transparent 26%),
+        radial-gradient(circle at 60% 0, var(--blood-red) 25%, transparent 26%);
+    background-size: 50px 50px;
+    background-repeat: repeat-x;
+}
+
+/* Fighter Profile Styles */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--blood-red);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.back-btn:hover {
+    background: var(--neon-red);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--glow-red);
+}
+
+.fighter-profile {
+    margin-top: 3rem;
+}
+
+.fighter-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.fighter-header::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: var(--blood-red);
+    border-radius: 3px;
+}
+
+.fighter-header .fighter-image {
+    width: 300px;
+    height: 400px;
+    background-size: cover;
+    background-position: top center;
+    border: 5px solid var(--blood-red);
+    border-radius: 10px;
+    box-shadow: 0 0 30px var(--glow-red);
+}
+
+.fighter-titles {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.fighter-titles h1 {
+    font-size: 2.5rem;
+    color: var(--neon-red);
+    text-shadow: 0 0 15px var(--glow-red);
+    margin-bottom: 0.5rem;
+}
+
+.fighter-titles h2 {
+    font-size: 1.8rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.fighter-titles h3 {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin: 0.5rem 0;
+}
+
+.fighter-titles h3:first-of-type {
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--glow-red);
+}
+
+.fighter-bio {
+    background: rgba(20, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 3rem;
+    border: 1px solid var(--blood-red);
+}
+
+.bio-content {
+    padding: 1.5rem;
+    background: rgba(10, 0, 0, 0.5);
+    border-radius: 5px;
+    position: relative;
+}
+
+.bio-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.signature-line {
+    width: 200px;
+    height: 1px;
+    background: var(--blood-red);
+    margin-left: auto;
+    margin-bottom: 5px;
+}
+
+#fighter-name-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--neon-red);
+    text-shadow: 0 0 8px var(--glow-red);
+}
+
+.error-card {
+    background: rgba(20, 0, 0, 0.8);
+    border: 3px solid var(--blood-red);
+    border-radius: 10px;
+    padding: 3rem;
+    text-align: center;
+    margin: 5rem auto;
+    max-width: 600px;
+}
+
+.error-card h2 {
+    font-size: 2.5rem;
+    color: var(--neon-red);
+    margin-bottom: 1.5rem;
+}
+
+.error-card p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #aaa;
+}
+
+/* BLOOD SPLATTER EFFECT */
+@keyframes bloodSplatter {
+    0% { 
+        transform: translate(-50%, -50%) scale(0); 
+        opacity: 0; 
+    }
+    50% { 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(3); 
+        opacity: 0; 
+    }
+}
+
+.vote-splatter {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,0,0,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bloodSplatter 0.8s forwards;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+}
+
+/* Add to existing media queries */
+@media (max-width: 768px) {
+    .fighter-header .fighter-image {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .fighter-titles h1 {
+        font-size: 2rem;
+    }
+    
+    .back-btn {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 10px 0 20px;
+    }
+    
+    .champion-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@keyframes glitch {
+    0% { text-shadow: 0.05em 0 0 var(--neon-red), -0.05em -0.025em 0 rgba(0,255,0,0.7); }
+    14% { text-shadow: 0.05em 0 0 var(--neon-red), -0.05em -0.025em 0 rgba(0,255,0,0.7); }
+    15% { text-shadow: -0.05em -0.025em 0 var(--neon-red), 0.025em 0.025em 0 rgba(0,255,0,0.7); }
+    49% { text-shadow: -0.05em -0.025em 0 var(--neon-red), 0.025em 0.025em 0 rgba(0,255,0,0.7); }
+    50% { text-shadow: 0.025em 0.05em 0 var(--neon-red), 0.05em 0 0 rgba(0,255,0,0.7); }
+    99% { text-shadow: 0.025em 0.05em 0 var(--neon-red), 0.05em 0 0 rgba(0,255,0,0.7); }
+    100% { text-shadow: -0.025em 0 0 var(--neon-red), -0.025em -0.025em 0 rgba(0,255,0,0.7); }
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(32px, 9999px, 28px, 0); }
+    5% { clip: rect(13px, 9999px, 37px, 0); }
+    10% { clip: rect(40px, 9999px, 20px, 0); }
+    15% { clip: rect(8px, 9999px, 14px, 0); }
+    20% { clip: rect(50px, 9999px, 40px, 0); }
+    25% { clip: rect(25px, 9999px, 50px, 0); }
+    30% { clip: rect(50px, 9999px, 30px, 0); }
+    35% { clip: rect(50px, 9999px, 53px, 0); }
+    40% { clip: rect(20px, 9999px, 20px, 0); }
+    45% { clip: rect(50px, 9999px, 40px, 0); }
+    50% { clip: rect(30px, 9999px, 52px, 0); }
+    55% { clip: rect(50px, 9999px, 20px, 0); }
+    60% { clip: rect(40px, 9999px, 35px, 0); }
+    65% { clip: rect(21px, 9999px, 50px, 0); }
+    70% { clip: rect(50px, 9999px, 50px, 0); }
+    75% { clip: rect(50px, 9999px, 50px, 0); }
+    80% { clip: rect(50px, 9999px, 50px, 0); }
+    85% { clip: rect(50px, 9999px, 50px, 0); }
+    90% { clip: rect(50px, 9999px, 50px, 0); }
+    95% { clip: rect(50px, 9999px, 50px, 0); }
+    100% { clip: rect(50px, 9999px, 50px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(65px, 9999px, 15px, 0); }
+    5% { clip: rect(52px, 9999px, 74px, 0); }
+    10% { clip: rect(79px, 9999px, 69px, 0); }
+    15% { clip: rect(2px, 9999px, 36px, 0); }
+    20% { clip: rect(38px, 9999px, 13px, 0); }
+    25% { clip: rect(73px, 9999px, 57px, 0); }
+    30% { clip: rect(10px, 9999px, 70px, 0); }
+    35% { clip: rect(82px, 9999px, 46px, 0); }
+    40% { clip: rect(60px, 9999px, 29px, 0); }
+    45% { clip: rect(87px, 9999px, 24px, 0); }
+    50% { clip: rect(11px, 9999px, 9px, 0); }
+    55% { clip: rect(25px, 9999px, 53px, 0); }
+    60% { clip: rect(82px, 9999px, 34px, 0); }
+    65% { clip: rect(64px, 9999px, 11px, 0); }
+    70% { clip: rect(30px, 9999px, 73px, 0); }
+    75% { clip: rect(65px, 9999px, 8px, 0); }
+    80% { clip: rect(82px, 9999px, 40px, 0); }
+    85% { clip: rect(47px, 9999px, 23px, 0); }
+    90% { clip: rect(78px, 9999px, 35px, 0); }
+    95% { clip: rect(34px, 9999px, 41px, 0); }
+    100% { clip: rect(54px, 9999px, 44px, 0); }
+}
+
+@keyframes shine {
+    100% { left: 100%; }
+}
+
+@media (max-width: 768px) {
+    .matchup-cage {
+        flex-direction: column;
+    }
+    
+    .vs-divider {
+        margin: 2rem 0;
+    }
+    
+    .vote-buttons {
+        flex-direction: column;
+    }
+    
+    .glitch {
+        font-size: 4rem;
+    }
+    
+    .event-info {
+        font-size: 0.9rem;
+    }
+}

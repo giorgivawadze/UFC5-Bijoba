@@ -1,0 +1,130 @@
+[
+    {
+        "id": 1,
+        "name": "Giorgi Vatsadze",
+        "nickname": "THE BULL",
+        "rank": "Champion",
+        "record": "17-4-0",
+        "stats": {
+            "wins": 17,
+            "losses": 4,
+            "knockouts": 15,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "4.png",
+        "bio": "Known for his devastating knockout power, THE BULL charges through opponents with relentless aggression. 15 of his 17 wins came by way of knockout, often in the first round. His signature move is the overhand right that has put many fighters to sleep. With granite chin and heavy hands, he dominates the octagon with pure striking power."
+    },
+    {
+        "id": 2,
+        "name": "Luka Gurwishvili",
+        "nickname": "OSSETIAN WARRIOR",
+        "rank": 3,
+        "record": "5-3-0",
+        "stats": {
+            "wins": 5,
+            "losses": 3,
+            "knockouts": 5,
+            "submissions": 0,
+            "decisions": 0
+        },
+        "image": "1.png",
+        "bio": "A pure striker with knockout power in both hands. The OSSETIAN WARRIOR never backs down from a brawl and has finished all his wins by knockout. His aggressive style makes him a fan favorite. Trained in traditional Ossetian wrestling, he combines striking with brutal clinch work that wears down opponents."
+    },
+    {
+        "id": 3,
+        "name": "Nika Kopaliani",
+        "nickname": "Nikita",
+        "rank": 2,
+        "record": "7-4-0",
+        "stats": {
+            "wins": 7,
+            "losses": 4,
+            "knockouts": 5,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "5.png",
+        "bio": "Technical striker with precision timing and footwork. Nikita picks apart opponents with surgical striking and has a knack for finding knockout opportunities in later rounds. His calm demeanor in the cage contrasts with his violent finishes. Background in kickboxing gives him diverse striking arsenal."
+    },
+    {
+        "id": 4,
+        "name": "Saba Boyoveli",
+        "nickname": "THE EAGLE",
+        "rank": 1,
+        "record": "9-5-0",
+        "stats": {
+            "wins": 9,
+            "losses": 5,
+            "knockouts": 9,
+            "submissions": 0,
+            "decisions": 0
+        },
+        "image": "2.png",
+        "bio": "Pure knockout artist with 9 first-round finishes. THE EAGLE soars through opponents with lightning-fast combinations and explosive power. His fights rarely see the second round. Trains at high altitude to maintain cardio for his explosive style. Known for his lethal left hook."
+    },
+    {
+        "id": 5,
+        "name": "Dachi Gvaladze",
+        "nickname": "THE CAVEMAN",
+        "rank": 4,
+        "record": "7-5-0",
+        "stats": {
+            "wins": 7,
+            "losses": 5,
+            "knockouts": 7,
+            "submissions": 0,
+            "decisions": 0
+        },
+        "image": "8.png",
+        "bio": "Brute strength and raw power define THE CAVEMAN. He overwhelms opponents with relentless pressure and earth-shaking power in both hands. All wins by knockout, often in devastating fashion. Background in powerlifting gives him exceptional strength. His walkout music is always primitive drums."
+    },
+    {
+        "id": 6,
+        "name": "Luka Shergelashvili",
+        "nickname": "DARKNESS",
+        "rank": 6,
+        "record": "6-4-0",
+        "stats": {
+            "wins": 6,
+            "losses": 4,
+            "knockouts": 4,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "7.png",
+        "bio": "Methodical and calculated, DARKNESS drags opponents into deep waters and drowns them with pressure. Excellent cardio and granite chin allow him to push a punishing pace. 4 KOs and 2 decisions show his versatile finishing ability. Trains in complete darkness to enhance other senses."
+    },
+    {
+        "id": 7,
+        "name": "Giorgi Kvaratskhelia",
+        "nickname": "BIG BOY",
+        "rank": 7,
+        "record": "5-4-0",
+        "stats": {
+            "wins": 5,
+            "losses": 4,
+            "knockouts": 4,
+            "submissions": 0,
+            "decisions": 1
+        },
+        "image": "3.jpg",
+        "bio": "Massive heavyweight with surprising speed for his size. BIG BOY uses his reach effectively and has thunderous power in his hands. When he connects, opponents don't get back up. Background in rugby gives him exceptional tackling ability. Enjoys intimidating stare-downs before fights."
+    },
+    {
+        "id": 8,
+        "name": "Akaki Tsabria",
+        "nickname": "ICE COLD",
+        "rank": 5,
+        "record": "5-2-0",
+        "stats": {
+            "wins": 5,
+            "losses": 5,
+            "knockouts": 3,
+            "submissions": 0,
+            "decisions": 2
+        },
+        "image": "6.png",
+        "bio": "Technical counter-striker with ice in his veins. ICE COLD remains calm under pressure and picks apart aggressive opponents. His precise timing leads to beautiful knockout finishes. Never shows emotion in the cage. Trains in cryotherapy chambers to enhance recovery."
+    }
+]

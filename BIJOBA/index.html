@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFC 5 | GEORGIAN BLOOD SPORT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- COVER IMAGE -->
+    <div id="cover-screen">
+        <div class="cover-overlay"></div>
+        <img id="cover-image" src="cmbp.jpg" alt="UFC 5 Cover">
+        <div class="cover-content">
+            <h1>ENTER THE OCTAGON</h1>
+            <div class="loading-pulse">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring delay"></div>
+                <div class="blood-drop"></div>
+            </div>
+            <p>Loading bloodsport data...</p>
+        </div>
+    </div>
+
+    <!-- Blood Splatter Effect -->
+    <div class="blood-overlay"></div>
+    
+    <!-- Glitch Header -->
+    <header class="blood-header">
+        <div class="glitch-container">
+            <h1 class="glitch" data-text="UFC 5">UFC 5</h1>
+            <div class="subtitle">GEORGIAN BLOOD SPORT</div>
+        </div>
+        <div class="event-timer">
+            <div class="event-info">NEXT FIGHT: FRIDAY 18:00 GET</div>
+            <div id="countdown">
+                <div><span id="days">00</span><span>DAYS</span></div>
+                <div><span id="hours">00</span><span>HRS</span></div>
+                <div><span id="minutes">00</span><span>MIN</span></div>
+                <div><span id="seconds">00</span><span>SEC</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="cage-container">
+        <!-- Champion Section -->
+        <section class="blood-champion">
+            <h2 class="section-title"><i class="fas fa-skull"></i> THE KING OF VIOLENCE</h2>
+            <a href="fighter.html?id=1" class="champion-card" id="champion">
+                <!-- JS loaded -->
+            </a>
+        </section>
+
+        <!-- Rankings Section -->
+        <section class="blood-rankings">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> RANKINGS</h2>
+            <div class="rankings-grid" id="rankings">
+                <!-- JS loaded -->
+            </div>
+        </section>
+
+        <!-- Matchup Section -->
+        <section class="blood-match">
+            <h2 class="section-title"><i class="fas fa-fist-raised"></i> <span id="event-title">WEEKLY BLOODBATH</span></h2>
+            
+            <div class="vs-banner">WHO WILL BLEED FIRST?</div>
+            <div class="matchup-cage">
+                <div class="fighter-card" id="fighter1">
+                    <!-- JS loaded -->
+                </div>
+                <div class="vs-divider">
+                    <span>VS</span>
+                    <div class="pulse-effect"></div>
+                </div>
+                <div class="fighter-card" id="fighter2">
+                    <!-- JS loaded -->
+                </div>
+            </div>
+            <div class="blood-meter">
+                <div class="blood-bar" id="bloodBar1"></div>
+                <div class="blood-bar" id="bloodBar2"></div>
+            </div>
+            <div class="blood-count">
+                <span id="bloodCount1">Red</span>
+                <span class="separator">BLOOD UNITS</span>
+                <span id="bloodCount2">Blue</span>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="blood-stats">
+            <h2 class="section-title"><i class="fas fa-heartbeat"></i> CARNAGE METRICS</h2>
+            <div class="stats-grid" id="statsGrid">
+                <!-- JS loaded -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="blood-footer">
+        <p>WARNING: CONTINUED VIEWING MAY INDUCE VIOLENT TENDENCIES</p>
+        <div class="blood-drip"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
